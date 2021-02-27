@@ -1,0 +1,20 @@
+---
+version: '2'
+services:
+  valheim:
+    image: fbmaya/valheim-server:v1
+    container_name: valheim
+    restart: always
+    environment:
+      - SERVER_NAME=Torresmo
+      - WORLD_NAME=valheim-on-docker
+      - SERVER_PASS=123456
+      - SERVER_PUBLIC=0
+      - DNS_1=1.1.1.1
+      - DNS_2=1.0.0.1
+    volumes:
+      - /srv/dev-disk-by-label-Files/Config/Valheim/valheim-server-config:/config
+    ports:
+     - "2456"
+     - "2456:2458"
+     - "2458/udp"
