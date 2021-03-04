@@ -6,15 +6,18 @@ services:
     container_name: valheim
     restart: always
     environment:
-      - SERVER_NAME=Torresmo
+      - SERVER_NAME=Valheim-run-docker
       - WORLD_NAME=valheim-on-docker
-      - SERVER_PASS=123456
-      - SERVER_PUBLIC=0
+      - SERVER_PASS=dM(b}LZSFhn}q44r
+      - SERVER_PORT=2456
+      - SERVER_PUBLIC=1
+        #      - PERMISSIONS_UMASK=022
       - DNS_1=1.1.1.1
       - DNS_2=1.0.0.1
     volumes:
-      - /srv/dev-disk-by-label-Files/Config/Valheim/valheim-server-config:/config
+      - /home/fabio_maia/valheim-server/data:/opt/valheim
+      - /home/fabio_maia/valheim-server/config:/config
     ports:
-     - "2456"
-     - "2456:2458"
-     - "2458/udp"
+      - 2456-2458:2456-2458/udp
+            #- "2456-2458/tcp"
+            #- "2456-2458/udp"
